@@ -1,0 +1,164 @@
+<svg  width="359.017" height="169.061" viewBox="0 0 359.017 169.061">
+                <defs>
+                    <style jsx>{`
+                    .cls-1 {
+                        fill: url(#linear-gradient);
+                    }
+
+                        .cls-2 {
+                        fill: #405d95;
+                    }
+
+                        .cls-3 {
+                        fill: #4465a6;
+                    }
+
+                        .cls-4 {
+                        fill: #3a5594;
+                    }
+
+                        .cls-5 {
+                        fill: #405da2;
+                    }
+
+                        .cls-6 {
+                        fill: #5084ab;
+                    }
+
+                        .cls-7 {
+                        fill: #598fbb;
+                    }
+
+                        .cls-8 {
+                        fill: #6fb0c5;
+                    }
+
+                        .cls-9 {
+                        fill: #6cb7cf;
+                    }
+
+                        .cls-10 {
+                        fill: #4d7ea8;
+                    }
+
+                        .cls-11 {
+                        fill: #578cb9;
+                    }
+
+                        .cls-12 {
+                        fill: #507eaa;
+                    }
+
+                        .cls-13 {
+                        fill: #5587b7;
+                    }
+
+                        .cls-14 {
+                        fill: #5fa3bc;
+                    }
+
+                        .cls-15 {
+                        fill: #69b1cc;
+                    }
+
+                        .cls-16 {
+                        fill: #2c3985;
+                    }
+
+                        .cls-17 {
+                        fill: #324093;
+                    }
+
+                        .cls-18 {
+                        fill: #3f6098;
+                    }
+
+                        .cls-19 {
+                        fill: #476ba9;
+                    }
+
+                        .cls-20 {
+                        fill: url(#linear-gradient-2);
+                    }
+                    `
+                    }
+
+                    </style>
+                    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                        <stop offset="0" stop-color="#76ccda"/>
+                        <stop offset="1" stop-color="#282b88"/>
+                    </linearGradient>
+                    <linearGradient id="linear-gradient-2" x1="0.858" y1="0.344" x2="-0.032" y2="1.896"
+                                    gradientUnits="objectBoundingBox">
+                        <stop offset="0" stop-color="#3cdfd4" stop-opacity="0"/>
+                        <stop offset="1" stop-color="#72c3d5"/>
+                    </linearGradient>
+                </defs>
+                <g id="planet_1" data-name="planet 1" transform="translate(279.031 -662.538) rotate(8)">
+                    <circle id="planet1" className="cls-1" cx="74.843" cy="74.843" r="74.843"
+                            transform="translate(-80.117 680.309)"/>
+                    <g id="craters" transform="translate(-69.784 690.519)">
+                        <g id="cr" transform="translate(11.507 68.554)">
+                            <path id="cr2" className="cls-2"
+                                  d="M12.929,0A13.2,13.2,0,0,1,25.859,13.454,13.2,13.2,0,0,1,12.929,26.909,13.2,13.2,0,0,1,0,13.454,13.2,13.2,0,0,1,12.929,0Z"
+                                  transform="translate(0 0)"/>
+                            <ellipse id="cr1" className="cls-3" cx="11.517" cy="12.042" rx="11.517" ry="12.042"
+                                     transform="translate(0 2.824)"/>
+                        </g>
+                        <g id="cr-2" data-name="cr" transform="translate(80.02 80.02)">
+                            <ellipse id="cr2-2" data-name="cr2" className="cls-4" cx="11.532" cy="11.768" rx="11.532"
+                                     ry="11.768" transform="translate(0 0)"/>
+                            <circle id="cr1-2" data-name="cr1" className="cls-5" cx="10.826" cy="10.826" r="10.826"
+                                    transform="translate(0 1.883)"/>
+                        </g>
+                        <g id="cr-3" data-name="cr" transform="translate(0 36.245)">
+                            <path id="cr2-3" data-name="cr2" className="cls-6"
+                                  d="M9.179,0a9.063,9.063,0,0,1,9.179,8.943,9.063,9.063,0,0,1-9.179,8.943A9.063,9.063,0,0,1,0,8.943,9.063,9.063,0,0,1,9.179,0Z"
+                                  transform="translate(0 0)"/>
+                            <ellipse id="cr1-3" data-name="cr1" className="cls-7" cx="8.473" cy="8.237" rx="8.473"
+                                     ry="8.237" transform="translate(0 1.412)"/>
+                        </g>
+                        <g id="cr-4" data-name="cr" transform="translate(42.834 0)">
+                            <circle id="cr2-4" data-name="cr2" className="cls-8" cx="9.885" cy="9.885" r="9.885"
+                                    transform="translate(0)"/>
+                            <circle id="cr1-4" data-name="cr1" className="cls-9" cx="9.179" cy="9.179" r="9.179"
+                                    transform="translate(0 1.412)"/>
+                        </g>
+                        <g id="cr-5" data-name="cr" transform="translate(59.46 34.475)">
+                            <path id="cr2-5" data-name="cr2" className="cls-10"
+                                  d="M12.309,0A12.309,12.309,0,1,1,0,12.309,12.309,12.309,0,0,1,12.309,0Z"
+                                  transform="translate(0 0)"/>
+                            <ellipse id="cr1-5" data-name="cr1" className="cls-11" cx="11.297" cy="11.532" rx="11.297"
+                                     ry="11.532" transform="translate(0.32 1.769)"/>
+                        </g>
+                        <g id="cr-6" data-name="cr" transform="translate(115.324 48.012)">
+                            <ellipse id="cr2-6" data-name="cr2" className="cls-12" cx="6.59" cy="6.825" rx="6.59"
+                                     ry="6.825" transform="translate(0 0)"/>
+                            <circle id="cr1-6" data-name="cr1" className="cls-13" cx="6.119" cy="6.119" r="6.119"
+                                    transform="translate(0 1.412)"/>
+                        </g>
+                        <g id="cr-7" data-name="cr" transform="translate(88.022 8.002)">
+                            <ellipse id="cr2-7" data-name="cr2" className="cls-14" cx="6.119" cy="5.884" rx="6.119"
+                                     ry="5.884" transform="translate(0 0)"/>
+                            <ellipse id="cr1-7" data-name="cr1" className="cls-15" cx="5.648" cy="5.413" rx="5.648"
+                                     ry="5.413" transform="translate(0 0.941)"/>
+                        </g>
+                    </g>
+                    <g id="cr-8" data-name="cr" transform="translate(-29.426 797.32) rotate(3)">
+                        <ellipse id="cr2-8" data-name="cr2" className="cls-16" cx="10.156" cy="9.759" rx="10.156"
+                                 ry="9.759" transform="translate(0.129 0)"/>
+                        <ellipse id="cr1-8" data-name="cr1" className="cls-17" cx="9.615" cy="9.038" rx="9.615"
+                                 ry="9.038" transform="translate(0 1.106)"/>
+                    </g>
+                    <g id="cr-9" data-name="cr" transform="translate(-19.023 765.941)">
+                        <path id="cr2-9" data-name="cr2" className="cls-18"
+                              d="M4.894,0A4.8,4.8,0,0,1,9.789,4.706,4.8,4.8,0,0,1,4.894,9.412,4.8,4.8,0,0,1,0,4.706,4.8,4.8,0,0,1,4.894,0Z"
+                              transform="translate(0 0)"/>
+                        <ellipse id="cr1-9" data-name="cr1" className="cls-19" cx="4.518" cy="4.33" rx="4.518" ry="4.33"
+                                 transform="translate(0 0.753)"/>
+                    </g>
+                    <path id="sciezka" className="cls-20"
+                          d="M96.553,6.2c-123.9,23.556-139.8,34.4,18.7,27.355,164.257-7.3,179.483-13.956,183.5-13.608,159.751-23-52.721-19.8-52.721-19.8s0,1.627-.134,3.776c81.811-3.292,111.737,6.316,12.667,16.023-69.547,3.909-120.293,6.8-189.408,8.242-83.713,2.669,28.026-16.363,28.026-16.363S96.611,7.455,96.553,6.2Z"
+                          transform="translate(-168.306 807.362) rotate(-18)"/>
+                </g>
+            </svg>

@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import StarsBackground from "./components/StarsBackground/StarsBackground";
+import Background from "./components/background/background";
 
 function App() {
   return (
     <div className="App">
-      <StarsBackground />
+        <Background />
     </div>
   );
 }
