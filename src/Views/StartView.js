@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 import { keyframes } from 'styled-components';
-import Button from "../../components/Button/Button";
-import topWave from "../../assets/topWave.svg";
-import bottomWave from "../../assets/bottomWave.svg";
+import Button from "../components/Button/Button";
+import topWave from "../assets/topWave.svg";
+import bottomWave from "../assets/bottomWave.svg";
+import Background from "../components/background/background";
 
 
 
@@ -55,6 +56,7 @@ const StartView = () => {
         bottom: 20px;
         right: 20px;
         animation: ${SlideInAnimation} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+        
     `
 
     const Message = styled.div`
@@ -80,11 +82,12 @@ const StartView = () => {
 
     return (
         <>
+
             <Message>
                 <TextLine delay="1.5s">  Hi ! </TextLine>
-                <TextLine delay="2.5s"> My name is Przemysław </TextLine>
+                <TextLine delay="2.5s"> My name is Przemyslaw </TextLine>
                 <TextLine delay="3.5s"> and I'm Front-End developer. </TextLine>
-                <StyledButton delay="4.5s"/>
+                <StyledButton delay="4.5s"> Let's go for a journey!</StyledButton>
             </Message>
 
 
