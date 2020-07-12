@@ -8,7 +8,7 @@ const Button = ({className, children}) => {
         border-image-source: linear-gradient(90deg, rgba(218,155,138,1) 0%, rgba(195,60,163,1) 100%);
         border-image-slice: 1;
         background: none;
-      
+        overflow: hidden;
 
         padding: 35px 50px;
         cursor: pointer;
