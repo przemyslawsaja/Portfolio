@@ -5,12 +5,9 @@ import styled from "styled-components";
 const StarsContainer = styled(Particles)`
         height: 100vh;
         width: 100vw;
-        z-index: -1;
-        position: absolute;
-        transform: rotate(90deg) translateX(-100v);
-        
+        z-index: -2;
+        position: fixed;        
     `
-
 const Stars = () => {
     return (
         <StarsContainer

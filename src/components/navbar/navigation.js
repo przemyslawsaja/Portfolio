@@ -1,25 +1,22 @@
-import React from 'react';
+import React,  {useRef}  from 'react';
 import styled from "styled-components";
+import { Link } from 'react-scroll'
 
-const Wrapper = styled.div`
-  position: absolute;
-`
+
 const Menubar = styled.div`
   text-align: center;
-  z-index: 3;
   height: 100vh;
-  //transform: rotate(-90deg) translateX(-100vh);
   transform-origin: top left;
-
-  width: 100px;
+  z-index: 10;
+  width: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position:sticky;
-  background-color: #141224;
+  position:fixed;
+  background-color: #100e1c;
 `
 const Icon = styled.i`
-    font-size: 3em;
+    font-size: 2.5em;
     color: #373160;
     margin: 50px 0;
     cursor: pointer;
@@ -27,23 +24,33 @@ const Icon = styled.i`
     &:hover {
       color: rgb(218,155,138);
     }
-    
-
 `
+
+
 const Navigation = () => {
+
+    const ref = useRef(null);
+
+    const scroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    };
+
     return (
         //TODO: Highlight on activated href
-        <Wrapper>
             <Menubar>
                 <ul>
-                    <li> <Icon className="fas fa-home"></Icon></li>
-                    <li> <Icon className="fas fa-user"></Icon> </li>
-                    <li> <Icon className="fas fa-code"></Icon> </li>
-                    <li> <Icon className="fas fa-envelope"></Icon> </li>
+                    <li>
+                            <Link>
+                                <Icon className="fas fa-home" />
+                            </Link>
+                    </li>
+                    <li>
+                            <Icon className="fas fa-user" onClick={() => scroll(20)} />
+                    </li>
+                    <li> <Icon className="fas fa-code">     </Icon> </li>
+                    <li> <Icon className="fas fa-envelope"> </Icon> </li>
                 </ul>
             </Menubar>
-        </Wrapper>
-
     );
 };
 

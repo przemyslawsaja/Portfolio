@@ -4,14 +4,14 @@ import styled from "styled-components";
 const StyledWave = styled.img`
    position: absolute;
    width: 100vw;
-   z-index: -3;
-   bottom: 0;
+   z-index: 1;
+   bottom: -1px;
    top: ${({ position }) => position ? "0" : "unset"};
 `
 
-const Wave = ({src, alt, position}) => {
+const Wave = ({className, src, position}) => {
     return (
-        <StyledWave src={src} position={position} />
+        <StyledWave  className={className} src={src} position={position} />
     );
 };
 
