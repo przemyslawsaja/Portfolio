@@ -2,8 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import BottomWave from '../assets/waves/aboutWave_1.svg'
 import TopWave from '../assets/waves/aboutWave_2.svg'
-import Title from '../components/Title/Title'
-import Wave from "../components/Wave/Wave";
+import Title from '../components/Atoms/Title'
+import Wave from "../components/Atoms/Wave";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -12,18 +12,36 @@ const Wrapper = styled.div`
 `
 const ContextWrapper = styled.section`
   position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
+  bottom: 15%;
+  left: 20%;
+  transform: translateX(-20%);
   z-index: 1;
   text-align: center;
   font-size: 1.2em;
-  width: 40em;
+  width: 42em;
   margin: 2em auto;
 `
-const TechList = styled.ul`
-
-  list-style-type: none;
+const Description = styled.article`
+  background-color: rgba(26, 24, 47, 0);
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 10px;
+`
+const ListWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 25vw;
+  margin: auto;
+`
+const ListTitle = styled.p`
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: #8838ff;
+`
+const StyledList = styled.ul`
+  margin-top: 20px;
+  list-style-type: circle;
+  text-align: left;
 `
 const StyledWave = styled(Wave)`
   position: absolute;
@@ -31,29 +49,40 @@ const StyledWave = styled(Wave)`
 `
 const About = () => {
     return (
-        <Wrapper>
+        <Wrapper id="about">
             <StyledWave src={TopWave} position="top" />
             <StyledWave src={BottomWave} />
                 <ContextWrapper>
                     <Title> About me </Title>
-                    I study computer science in a
-                    non-stationary system and
-                    I'm willing to take on a full-time
-                    job. I am motivated and willing
-                    to learn. I am an independent
-                    person and very creative, which
-                    will certainly result in new
-                    technological solutions in the
-                    realized projects.
-                    Here are a few technologies I've been working with recently:
-                    <TechList>
-                        <li> HTML & CSS </li>
-                        <li> SASS </li>
-                        <li> BOOTSTRAP </li>
-                        <li> Javascript(ES6+) </li>
-                        <li> React </li>
-                        <li> Redux </li>
-                    </TechList>
+                    <Description>
+                        Hi! I'm a 22-year-old student of computer science living in Cracow.
+                        From the beginning of high school I started to be interested in computer graphics.
+                        I created logos, posters, business cards, 3d models etc. With time, I found out that
+                        I was not fully satisfied and it was time to get to the next level. I'll admit that the
+                        graphic designer background is really helpful, and I have a great deal of pleasure in creating
+                        application and website designs. I am an independent and very creative person.
+                        <p> ... </p>
+                        <p>Here are a few technologies I've been working with recently:</p>
+                    </Description>
+                    <ListWrapper>
+                        <StyledList>
+                            <ListTitle> FRONT-END</ListTitle>
+                            <li> HTML5 </li>
+                            <li> CSS3 </li>
+                            <li> SASS </li>
+                            <li> FLEXBOX & GRID </li>
+                            <li> BOOTSTRAP </li>
+                            <li> Javascript(ES6+) </li>
+                            <li> React & Redux</li>
+                        </StyledList>
+                        <StyledList>
+                            <ListTitle> DESIGN</ListTitle>
+                            <li> Adobe Photoshop</li>
+                            <li> Adobe Illustrator</li>
+                            <li> Adobe Xd </li>
+                        </StyledList>
+                    </ListWrapper>
+
                 </ContextWrapper>
             </Wrapper>
     );

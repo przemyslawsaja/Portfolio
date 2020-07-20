@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 import { keyframes } from 'styled-components';
-import Button from "../components/Button/Button";
+import Button from "../components/Atoms/Button/Button";
 import topWave from "../assets/waves/startWave_1.svg";
 import bottomWave from "../assets/waves/startWave_2.svg";
-import Wave from "../components/Wave/Wave";
+import Wave from "../components/Atoms/Wave";
 import { device } from "../devices/breakpoints";
 
 const SlideInAnimation = keyframes`
@@ -78,7 +78,7 @@ const TextLine = styled.h1`
 
 const StartView = () => {
     return (
-        <>
+        <div id="home">
             <Wave src={topWave} position="top" />
             <Wave src={bottomWave} />
             <Wrapper>
@@ -90,7 +90,7 @@ const StartView = () => {
                 </Message>
                 <Avatar src="https://zapodaj.net/images/befd32d0e72b2.png" alt="Avatar" />
             </Wrapper>
-        </>
+        </div>
     );
 };
 

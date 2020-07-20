@@ -1,8 +1,8 @@
 import React from 'react';
-import Title from "../components/Title/Title";
+import Title from "../components/Atoms/Title";
 import TopWave from "../assets/waves/contactWave_1.svg"
 import BottomWave from "../assets/waves/contactWave_2.svg"
-import Wave from "../components/Wave/Wave";
+import Wave from "../components/Atoms/Wave";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -22,7 +22,7 @@ const StyledWave = styled(Wave)`
 `
 const Contact = () => {
     return (
-        <Wrapper>
+        <Wrapper id="contact">
             <StyledWave src={TopWave} position="top" />
             <StyledWave src={BottomWave} />
             <ContextWrapper>

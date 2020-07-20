@@ -13,6 +13,7 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   font-weight: 500;
+
 }
 ::-webkit-scrollbar{
   width: 10px;
