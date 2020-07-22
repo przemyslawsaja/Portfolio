@@ -26,11 +26,11 @@ const Icon = styled.i`
   margin-right: 10px;
 `
 const ButtonText = styled.div`
-
+  font-size: 1.4em;
 `
-const BackButton = ({className}) => {
+const BackButton = ({className, onClick}) => {
     return (
-        <ButtonWrapper className={className}>
+        <ButtonWrapper onClick={onClick} className={className}>
             <Icon className="fas fa-arrow-circle-left" />
             <ButtonText> GO BACK </ButtonText>
         </ButtonWrapper>
