@@ -2,6 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 
 const ButtonWrapper = styled.button`
+  font-size: 1.5em;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,20 +23,19 @@ const ButtonWrapper = styled.button`
     background-color: #272447;
   }
 `
-const Icon = styled.i`
-  font-size: 1.8em;
-  margin-right: 10px;
-`
-const ButtonText = styled.div`
-  font-size: 1.4em;
-`
-const BackButton = ({className, onClick}) => {
+
+const SecondaryButton = ({children, className, onClick}) => {
     return (
         <ButtonWrapper onClick={onClick} className={className}>
-            <Icon className="fas fa-arrow-circle-left" />
-            <ButtonText> GO BACK </ButtonText>
+            {children}
+
         </ButtonWrapper>
     );
 };
 
-export default BackButton;
+export default SecondaryButton;
+
+/*
+ <Icon className="fas fa-arrow-circle-left" />
+            <ButtonText> GO BACK </ButtonText>
+ */

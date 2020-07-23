@@ -17,6 +17,7 @@ const Slide = styled.div`
 //TODO: Make fixed icons on right sight to linkedin,github, and cv download
 //TODO: Animate loading
 //TODO: Animate appearing elements on page + onscroll
+//TODO:
 
 function App() {
     return (

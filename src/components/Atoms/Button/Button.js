@@ -28,7 +28,6 @@ const Button = ({className, children}) => {
      &:hover {
        color: #1A182F;
        border-color: #1A182F;
-       //background: linear-gradient(90deg, rgba(218,155,138,1) 0% , rgba(195,60,163,1) 100%);
       }
      &::before {
         content: "";

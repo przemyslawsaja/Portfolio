@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {keyframes, css} from "styled-components";
-import BackButton from "../Atoms/Button/BackButton";
+import SecondaryButton from "../Atoms/Button/SecondaryButton";
 
 const ModalPrams = {
     x: '900px',
@@ -115,14 +115,21 @@ const LinkIcon = styled.div`
   margin-left: 10px;
   animation: ${ ({isLive}) => isLive ? css`${LiveAnimation} 1s ease-in-out infinite forwards;` : "none"};
 `
-const StyledBackButton = styled(BackButton)`
+const StyledBackButton = styled(SecondaryButton)`
+  font-size: 0.8em;
   margin: 5px auto;
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
 `
-
+const Icon = styled.i`
+  font-size: 1.8em;
+  margin-right: 10px;
+`
+const ButtonText = styled.div`
+  font-size: 1.4em;
+`
 const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, liveLink}) => {
     let techList,description;
     if(currentProject === "HomePantry"){
@@ -200,7 +207,10 @@ const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, 
                 </LinksWrapper>
                 <FieldDesc  margin="15px"> Project Description </FieldDesc>
                 {description}
-                <StyledBackButton onClick={closeModal}/>
+                <StyledBackButton onClick={closeModal}>
+                    <Icon className="fas fa-arrow-circle-left" />
+                    <ButtonText> GO BACK </ButtonText>
+                </StyledBackButton>
             </DescWrapper>
         </Wrapper>
     );
