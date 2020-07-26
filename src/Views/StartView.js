@@ -7,10 +7,22 @@ import bottomWave from "../assets/waves/startWave_2.svg";
 import Wave from "../components/Atoms/Wave";
 import { device } from "../devices/breakpoints";
 
-const SlideInAnimation = keyframes`
+const SlideInRight = keyframes`
   0% {
     -webkit-transform: translateX(1000px);
             transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  } 
+`
+const SlideInDown = keyframes`
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
     opacity: 0;
   }
   100% {
@@ -32,19 +44,37 @@ const FadeInAnimation = keyframes`
   }
 `
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0;
   height: 100vh;
   width: 100vw;
   z-index: 1;
   position: absolute;
+  
+ @media ${device.laptop} { 
+    left: 50px;
+  }
+  
 `
 const Avatar = styled.img `
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  bottom: 20px;
-  right: 20px;
-  animation: ${SlideInAnimation} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;  
+  width: 175px;
+  height: 175px;
+  animation: ${SlideInDown} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;  
   
+  @media ${device.mobileM} { 
+    width: 225px;
+    height: 225px;
+  }
+
+  @media ${device.tablet} {
+    width: 275px;
+    height: 275px;
+    animation: ${SlideInDown} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both; 
+  }
   @media ${device.laptop} { 
       width: 350px;
       height: 350px;
@@ -53,21 +83,26 @@ const Avatar = styled.img `
   }
 `
 const Message = styled.div`
-  font-size: 1em;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.6em;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
-  position: absolute;
   bottom: 7rem;
-  right: 15rem; 
+  right: 100px; 
   
+  @media ${device.mobileM} { 
+ font-size: 0.8em;
+  }
   @media ${device.laptop} { 
       font-size: 1em;
-      bottom: 4rem;
-      right: 26rem; 
+      bottom: 50px;
+      right: 200px; 
   }  
 `
 const StyledButton = styled(Button)`
+
         margin-top: 50px;
         animation: ${FadeInAnimation} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) ${props => props.delay } both;
 `
@@ -82,13 +117,14 @@ const StartView = () => {
             <Wave src={topWave} position="top" />
             <Wave src={bottomWave} />
             <Wrapper>
+                <Avatar src="https://zapodaj.net/images/befd32d0e72b2.png" alt="Avatar" />
                 <Message>
                     <TextLine delay="1.5s"> Hi ! </TextLine>
                     <TextLine delay="2.5s"> My name is Przemyslaw </TextLine>
                     <TextLine delay="3.5s"> and I'm Front-End developer. </TextLine>
-                    <StyledButton delay="4.5s"> Let's go for a journey!</StyledButton>
+
                 </Message>
-                <Avatar src="https://zapodaj.net/images/befd32d0e72b2.png" alt="Avatar" />
+                <StyledButton delay="4.5s"> Let's go for a journey!</StyledButton>
             </Wrapper>
         </div>
     );

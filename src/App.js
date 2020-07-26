@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import './App.css';
 import styled from "styled-components";
 import Navigation from "./components/Organisms/navigation";
@@ -8,7 +8,8 @@ import About from "./Views/About";
 import Stars from "./components/Molecules/Stars";
 import Projects from "./Views/Projects";
 import Contact from "./Views/Contact";
-import BackgroundOverlay from "./components/Atoms/BackgroundOverlay";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const Slide = styled.div`
   height: 100vh;
@@ -20,18 +21,23 @@ const Slide = styled.div`
 //TODO:
 
 function App() {
+    useEffect(() => {
+        Aos.init({
+            duration: 2000
+        })
+    }, [])
+
     return (
       <>
           <Navigation />
           <Stars />
           <Slide> <StartView /> </Slide>
-          <Slide> <About /> </Slide>
-          <Slide> <Projects /> </Slide>
-          <Slide> <Contact /> </Slide>
+          <Slide> <About aos="fade-right"/> </Slide>
+          <Slide> <Projects aos="fade-left"/> </Slide>
+          <Slide> <Contact aos="fade-down"/> </Slide>
           <Background />
       </>
   );
 }
 
 export default App;
-

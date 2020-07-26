@@ -8,7 +8,7 @@ const Overlay = styled.div`
   height: 400vh;
   background-color: black;
   z-index: 900;
-  opacity: 0.75;
+  opacity: 0.8;
 `
 
 const BackgroundOverlay = () => {

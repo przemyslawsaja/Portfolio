@@ -1,26 +1,42 @@
 import React from 'react';
 import styled, {keyframes, css} from "styled-components";
 import SecondaryButton from "../Atoms/Button/SecondaryButton";
+import { device } from "../../devices/breakpoints";
 
 const ModalPrams = {
     x: '900px',
     y: '650px'
 }
+const LiveAnimation = () => keyframes`
+  0% {
+    opacity: 0;
+  }
+  50% {
+   opacity: 1;
+  }
+  100% {
+   opacity: 0;
+  }         
+`
 const Wrapper = styled.div`
   position: fixed;
-  text-align: center;
-  width: ${ModalPrams.x};
-  height:${ModalPrams.y};
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
   z-index: 999;
   -webkit-box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
   box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
+  
+  @media ${device.tablet}{
+    width: ${ModalPrams.x};
+    height: ${ModalPrams.y};
+  }
 `
 const ImgWrapper = styled.div`
-  border-radius: 20px 0 0 20px;
   background-image: url(${props => props.img});
   background-color: #1A182F;
   background-position: center;
@@ -28,16 +44,26 @@ const ImgWrapper = styled.div`
   background-size: cover;
   position: absolute;
   left: 0;
-  width: ${ModalPrams.y};
-  height: ${ModalPrams.y};
+  width: 100vh;
+  height: 100vh;
+  
+  @media ${device.tablet}{
+    border-radius: 20px 0 0 20px;
+    width: ${ModalPrams.y};
+    height: ${ModalPrams.y};
+  }
 `
 const DescWrapper = styled.div`
-  border-radius: 0 20px 20px 0;
   position: absolute;
   right: 0;
   width: 300px;
-  height: ${ModalPrams.y};
+  height: 100vh;
   background-color: #454254;
+  
+  @media ${device.tablet}{
+    border-radius: 0 20px 20px 0;
+    height: ${ModalPrams.y};
+  }
 `
 const ProjectTitle = styled.h1`
   margin: 5px 0;
@@ -48,10 +74,12 @@ const FieldDesc = styled.p`
   margin: ${ props => props.margin} 0;
   padding: 5px;
 
-  
-  &:first-child {
-    border-radius: 0 20px 0 0;
+  @media ${device.tablet}{
+    &:first-child {
+      border-radius: 0 20px 0 0;
+    }
   }
+
 `
 const TechIcon = styled.li`
   background-color: #1A182F;
@@ -98,18 +126,6 @@ const Link = styled.a`
   }
 }
 `
-const LiveAnimation = () => keyframes`
-  0% {
-    opacity: 0;
-  }
-  
-  50% {
-   opacity: 1;
-  }
-  100% {
-   opacity: 0;
-  }         
-`
 
 const LinkIcon = styled.div`
   margin-left: 10px;
@@ -130,7 +146,9 @@ const Icon = styled.i`
 const ButtonText = styled.div`
   font-size: 1.4em;
 `
-const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, liveLink}) => {
+
+
+const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, liveLink }) => {
     let techList,description;
     if(currentProject === "HomePantry"){
         techList =

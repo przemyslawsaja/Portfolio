@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import BottomWave from '../assets/waves/aboutWave_1.svg'
 import TopWave from '../assets/waves/aboutWave_2.svg'
 import Title from '../components/Atoms/Title'
 import Wave from "../components/Atoms/Wave";
+import { device } from "../devices/breakpoints";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -12,30 +13,67 @@ const Wrapper = styled.div`
 `
 const ContextWrapper = styled.section`
   position: absolute;
-  bottom: 15%;
-  left: 20%;
-  transform: translateX(-20%);
   z-index: 1;
   text-align: center;
-  font-size: 1.2em;
-  width: 42em;
-  margin: 2em auto;
+  font-size: 0.8em;
+  margin: 50px 10px;
+  padding: 5px;
+  
+  @media ${device.mobileS} { 
+    margin: 10px 20px;
+    font-size: 0.9em;
+  }
+  @media ${device.mobileM} { 
+    padding: 20px;
+    font-size: 1em;
+  }
+  @media ${device.mobileL} { 
+    padding: 30px;
+    font-size: 1.1em;
+  }
+  @media ${device.tablet} {
+    padding: 80px;
+    font-size: 1.5em;
+  }
+  @media ${device.laptop} {
+     left: 50px;
+     max-width: 1000px;
+     font-size: 1.4em;
+  }
 `
+
 const Description = styled.article`
   background-color: rgba(26, 24, 47, 0);
   border-radius: 10px;
   margin-top: 30px;
-  padding: 10px;
 `
 const ListWrapper = styled.div`
+  
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  width: 25vw;
-  margin: auto;
+  font-size: 0.7em;
+  margin: 10px 15px;
+  
+  @media ${device.mobileS} { 
+      margin: 10px 30px;
+      font-size: 0.9em;
+  }
+  @media ${device.mobileM} { 
+     margin: 10px 30px;
+  }
+  @media ${device.mobileL} { 
+     margin: 10px 40px;
+  }
+  @media ${device.tablet} { 
+     margin: 10px 80px;
+  }
+  @media ${device.laptop} {
+     margin: 50px 80px;
+  }
 `
 const ListTitle = styled.p`
   margin-bottom: 15px;
-  font-size: 1.1em;
   color: #8838ff;
 `
 const StyledList = styled.ul`
@@ -47,12 +85,13 @@ const StyledWave = styled(Wave)`
   position: absolute;
   z-index: 1;
 `
-const About = () => {
+const About = ({aos}) => {
+
     return (
         <Wrapper id="about">
             <StyledWave src={TopWave} position="top" />
             <StyledWave src={BottomWave} />
-                <ContextWrapper>
+                <ContextWrapper data-aos={aos}>
                     <Title> About me </Title>
                     <Description>
                         Hi! I'm a 22-year-old student of computer science living in Cracow.
@@ -70,7 +109,6 @@ const About = () => {
                             <li> HTML5 </li>
                             <li> CSS3 </li>
                             <li> SASS </li>
-                            <li> FLEXBOX & GRID </li>
                             <li> BOOTSTRAP </li>
                             <li> Javascript(ES6+) </li>
                             <li> React & Redux</li>

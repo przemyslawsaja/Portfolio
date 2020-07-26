@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { keyframes } from 'styled-components';
 import { useForm } from "react-hook-form"
 import SecondaryButton from "../components/Atoms/Button/SecondaryButton";
+import { device } from "../devices/breakpoints";
 
 const ErrorAnimation = () => keyframes`
  0% {
@@ -34,45 +35,64 @@ const Wrapper = styled.div`
   position: absolute;
   height: 100vh;
   width: 100vw;
+
+
 `
 const ContextWrapper = styled.section`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-`
-const StyledWave = styled(Wave)`
-  position: absolute;
-  z-index: 1;
+position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  top: 15%;
+  
+    
+
 `
 const StyledForm = styled.form`
+  font-size: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-  width:  60vw;
-  height: 50vh;
   background-color: #0e0d1a;
-  opacity: 0.9;
   border-radius: 20px;
-  padding: 30px;
+  opacity: 0.9;
+  margin: 15px 0 10px 0;
+  width: 100vw;
+  height: 70vh;
+  padding: 10px;
+  @media ${device.mobileS} {
+     width: 80vw;
+  }
+  @media ${device.mobileL} {
+     width: 70vw;
+     height: auto;
+  }
+  @media ${device.laptop} {
+     padding: 20px 0 10px 10px;
+     margin: 50px 0 0 50px;
+  }  
+  
 `
 const StyledInput = styled.input`
-  font-size: 1.5em;
   width: 90%;
   color: white;
   margin: 10px 50px 40px 50px;
-  padding: 10px;
+  padding: 20px;
   background: none;
   border: 0;
   border-bottom: 2px solid royalblue;
-  
+
+  @media ${device.tablet} {
+     font-size: 1.5em;
+  }
   &:focus {
   outline-width: 0;
   }
 `
 const StyledTextArea = styled.textarea`
-  font-size: 1.5em;
+  resize: none;
   color: white;
   background: none;
   width: 90%;
@@ -80,6 +100,11 @@ const StyledTextArea = styled.textarea`
   padding: 20px;
   border: 2px solid royalblue;
   margin-bottom: 30px;
+  
+  @media ${device.tablet} {
+     font-size: 1.7em;
+  }
+  
   &:focus {
   outline-width: 0;
   }
@@ -89,8 +114,12 @@ const ErrorMessage = styled.p`
   margin: 5px;  
   animation: ${ErrorAnimation} 1s both;
 `
+const StyledWave = styled(Wave)`
+  position: absolute;
+  z-index: 1;
+`
 //TODO: BLOCK POSSIBILITY TO SEND MORE THEN ONE MAIL AFTER ENTERING VALID VALUES IN FORM
-const Contact = () => {
+const Contact = ({aos}) => {
     const { register, handleSubmit, errors } = useForm(); // initialise the hook
     const onSubmit = (data) => {
         console.log(data);
@@ -99,10 +128,8 @@ const Contact = () => {
         <Wrapper id="contact">
             <StyledWave src={TopWave} position="top" />
             <StyledWave src={BottomWave} />
-            <ContextWrapper>
-                <Title>
-                    Let's Talk
-                </Title>
+            <ContextWrapper data-aos={aos}>
+                <Title> Let's Talk </Title>
                 <StyledForm  onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                     {errors.email && errors.email.type === "required"  && <ErrorMessage>Email is required </ErrorMessage>}
                     {errors.email && errors.email.type === "pattern"  && <ErrorMessage> Wrong email </ErrorMessage>}

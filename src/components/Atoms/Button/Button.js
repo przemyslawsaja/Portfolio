@@ -3,22 +3,24 @@ import styled from "styled-components";
 
 const Button = ({className, children}) => {
     const Button = styled.button`
-
+      text-align: center;
+      text-decoration: none;
+      overflow: hidden;
         border: 4px solid;
         border-image-source: linear-gradient(90deg, rgba(218,155,138,1) 0%, rgba(195,60,163,1) 100%);
         border-image-slice: 1;
         background: none;
         overflow: hidden;
-
-        padding: 35px 50px;
+        position: relative;
+        padding: 20px ;
+        width: 250px;
+        font-size: 1.2em;
         cursor: pointer;
-        
         font-family: 'Raleway', sans-serif;
         font-weight: 600;
         color: white;
-        font-size: 1.5em;
         text-align: center;
-        text-decoration: none;
+
         
         -webkit-box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 24px -8px rgba(0,0,0,0.75);
@@ -33,7 +35,7 @@ const Button = ({className, children}) => {
         content: "";
         position: absolute;
         left: 0;
-        bottom:0;
+        bottom: 0;
         width: 100%;
         height: 0%;
         background: linear-gradient(90deg, rgba(218,155,138,1) 0% , rgba(195,60,163,1) 100%);
@@ -47,11 +49,9 @@ const Button = ({className, children}) => {
     `
 
     return (
-
         <Button className={className}>
             {children}
         </Button>
-
     );
 };
 

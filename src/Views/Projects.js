@@ -15,31 +15,26 @@ const Wrapper = styled.div`
   position: absolute;
   height: 100vh;
   width: 100vw;
-
 `
 const ContextWrapper = styled.section`
   position: absolute;
-  top: -10%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
+  top: 30px;
+  left: 10%;
+  z-index: 2;
 `
 const StyledWave = styled(Wave)`
   position: absolute;
   z-index: 1;
 `
 const ProjectsWrapper = styled.div`
-  margin-top: 100px;
+  width: 80vw;
+  justify-content: center;
+  margin-top: 15px;
   display: flex;
+  flex-wrap: wrap;
 `
-const BgOverlay = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  z-index: 999;
-`
-const Projects = () => {
+
+const Projects = ({aos}) => {
     const [isModalOpen, setModal] = useState(false);
     const [currentProject, setProject] = useState(undefined);
 
@@ -77,35 +72,35 @@ const Projects = () => {
 
         <>
             {isModalOpen && <BackgroundOverlay/>}
-        <Wrapper id="projects">
-            <StyledWave src={TopWave} position="top" />
-            <StyledWave src={BottomWave} />
-            { projects.map((p) => {
-                return (
-                    (isModalOpen && (currentProject === p.name))
-                    && <ProjectModule
-                        closeModal={closeModal}
-                        projectName={p.name}
-                        img={p.img}
-                        codeLink={p.codeLink}
-                        liveLink={p.liveLink}
-                        currentProject={currentProject}
-                    />
-                )
-            })}
+            <Wrapper id="projects" >
+                <StyledWave src={TopWave} position="top" />
+                <StyledWave src={BottomWave} />
 
-            <ContextWrapper>
-                <Title> Some things I've built.</Title>
-                <ProjectsWrapper>
-                    { projects.map((p) => {
-                        return (
-                            <ProjectContainer onClick={()=> openModal(p.name)} background={p.img}  />
-                        )
-                    })}
-                </ProjectsWrapper>
-            </ContextWrapper>
-        </Wrapper>
-            </>
+                { projects.map((p) => {
+                    return (
+                        (isModalOpen && (currentProject === p.name))
+                        && <ProjectModule
+                            closeModal={closeModal}
+                            projectName={p.name}
+                            img={p.img}
+                            codeLink={p.codeLink}
+                            liveLink={p.liveLink}
+                            currentProject={currentProject}
+                        />
+                    )
+                })}
+                    <ContextWrapper data-aos={aos}>
+                        <Title> Some things I've built.</Title>
+                        <ProjectsWrapper>
+                            { projects.map((p) => {
+                                return (
+                                    <ProjectContainer onClick={()=> openModal(p.name)} background={p.img}  />
+                                )
+                            })}
+                        </ProjectsWrapper>
+                    </ContextWrapper>
+            </Wrapper>
+        </>
     );
 };
 

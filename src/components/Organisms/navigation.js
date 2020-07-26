@@ -1,27 +1,51 @@
 import React from 'react';
 import styled from "styled-components";
 import { Link } from 'react-scroll'
+import { device } from '../../devices/breakpoints'
 
-
-const Menubar = styled.div`
-  text-align: center;
-  height: 100vh;
-  transform-origin: top left;
-  z-index: 10;
-  width: 80px;
+const Menubar = styled.ul`
+  list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: center;
   position:fixed;
+  top: 0;
+  height: 60px;
+  width: 100vw;
+  z-index: 10;
   background-color: #100e1c;
+  justify-items: center;
+  align-items: center;
+  
+  @media ${device.laptop} { 
+      height: 100%;
+      width: 80px;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+  }
 `
 const Icon = styled.i`
-    font-size: 2.5em;
+    font-size: 1.5em;
+    margin: 0 20px;
     color: #373160;
-    margin: 50px 0;
     cursor: pointer;
+    @media ${device.mobileS} { 
+      font-size: 1.7em;
+    }
+    @media ${device.mobileM} { 
+      font-size: 1.7em;
+    }
+     @media ${device.mobileL} {  
+      margin: 0 40px;
+      font-size: 2.2em;
+    }
     
-    &:hover {
+    @media ${device.laptop} {
+      font-size: 2.5em; 
+      margin: 50px 0;
+    }
+      &:hover {
       color: rgb(218,155,138);
     }
     
@@ -34,27 +58,18 @@ const Icon = styled.i`
 const Navigation = () => {
     return (
             <Menubar>
-                <ul>
-                    <li>
-                        <Icon exact as={Link} className="fas fa-home" activeClass="active" to="home" smooth={true} duration={1000} />
-
-                    </li>
-                    <li>
-                        <Link activeClass="active" to="about" smooth={true} duration={1000} >
-                            <Icon className="fas fa-user" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link activeClass="active" to="projects" smooth={true} duration={1000}>
-                            <Icon className="fas fa-code">     </Icon>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link activeClass="active" to="contact" smooth={true} duration={1000}>
-                            <Icon className="fas fa-envelope"> </Icon>
-                        </Link>
-                    </li>
-                </ul>
+                <li>
+                    <Icon exact as={Link} className="fas fa-home" activeClass="active" to="home" smooth={true} duration={1000} />
+                </li>
+                <li>
+                    <Icon exact as={Link} className="fas fa-user" activeClass="about" to="about" smooth={true} duration={1000} />
+                </li>
+                <li>
+                    <Icon exact as={Link} className="fas fa-code" activeClass="active" to="projects" smooth={true} duration={1000} />
+                </li>
+                <li>
+                    <Icon exact as={Link} className="fas fa-envelope" activeClass="active" to="contact" smooth={true} duration={1000} />
+                </li>
             </Menubar>
     );
 };
