@@ -6,7 +6,7 @@ import Wave from "../components/Atoms/Wave";
 import styled from "styled-components";
 import { keyframes } from 'styled-components';
 import { useForm } from "react-hook-form"
-import SecondaryButton from "../components/Atoms/Button/SecondaryButton";
+import SecondaryButton from "../components/Atoms/Buttons/SecondaryButton";
 import { device } from "../devices/breakpoints";
 
 const ErrorAnimation = () => keyframes`
@@ -114,10 +114,7 @@ const ErrorMessage = styled.p`
   margin: 5px;  
   animation: ${ErrorAnimation} 1s both;
 `
-const StyledWave = styled(Wave)`
-  position: absolute;
-  z-index: 1;
-`
+
 //TODO: BLOCK POSSIBILITY TO SEND MORE THEN ONE MAIL AFTER ENTERING VALID VALUES IN FORM
 const Contact = ({aos}) => {
     const { register, handleSubmit, errors } = useForm(); // initialise the hook
@@ -126,8 +123,8 @@ const Contact = ({aos}) => {
     };
     return (
         <Wrapper id="contact">
-            <StyledWave src={TopWave} position="top" />
-            <StyledWave src={BottomWave} />
+            <Wave src={TopWave} position="top" />
+            <Wave src={BottomWave} />
             <ContextWrapper data-aos={aos}>
                 <Title> Let's Talk </Title>
                 <StyledForm  onSubmit={handleSubmit(onSubmit)} autoComplete="off">

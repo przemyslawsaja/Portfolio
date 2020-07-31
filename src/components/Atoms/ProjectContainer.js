@@ -19,6 +19,7 @@ const Project = styled.button`
   transition: ease-in-out 0.2s;
   opacity: 1;
   border: 0;
+  outline: none;
   
   &:hover{
     transform: scale(1.1);

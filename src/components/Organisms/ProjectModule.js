@@ -1,23 +1,14 @@
 import React from 'react';
-import styled, {keyframes, css} from "styled-components";
-import SecondaryButton from "../Atoms/Button/SecondaryButton";
+import styled, { css } from "styled-components";
+import SecondaryButton from "../Atoms/Buttons/SecondaryButton";
 import { device } from "../../devices/breakpoints";
+import { LiveDot, FadeIn , FadeOut} from "../../Animations";
 
 const ModalPrams = {
     x: '900px',
     y: '650px'
 }
-const LiveAnimation = () => keyframes`
-  0% {
-    opacity: 0;
-  }
-  50% {
-   opacity: 1;
-  }
-  100% {
-   opacity: 0;
-  }         
-`
+
 const Wrapper = styled.div`
   position: fixed;
   left: 50%;
@@ -26,11 +17,11 @@ const Wrapper = styled.div`
   text-align: center;
   width: 100vw;
   height: 100vh;
-  z-index: 999;
+  z-index: 1000;
   -webkit-box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
   box-shadow: -1px 10px 21px -5px rgba(0,0,0,0.75);
-  
+  animation: ${({isModalOpen}) => isModalOpen ? FadeIn : 'none'} 0.5s ease-in-out;
   @media ${device.tablet}{
     width: ${ModalPrams.x};
     height: ${ModalPrams.y};
@@ -108,7 +99,6 @@ const DescriptionField = styled.div`
 `
 const LinksWrapper = styled.div`
   display: flex;
-
 `
 const Link = styled.a`
   display: flex; 
@@ -126,10 +116,9 @@ const Link = styled.a`
   }
 }
 `
-
 const LinkIcon = styled.div`
   margin-left: 10px;
-  animation: ${ ({isLive}) => isLive ? css`${LiveAnimation} 1s ease-in-out infinite forwards;` : "none"};
+  animation: ${ ({isLive}) => isLive ? css`${LiveDot} 1s ease-in-out infinite forwards;` : "none"};
 `
 const StyledBackButton = styled(SecondaryButton)`
   font-size: 0.8em;
@@ -147,8 +136,7 @@ const ButtonText = styled.div`
   font-size: 1.4em;
 `
 
-
-const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, liveLink }) => {
+const ProjectModule = ({isModalOpen, closeModal, projectName, currentProject, img, codeLink, liveLink }) => {
     let techList,description;
     if(currentProject === "HomePantry"){
         techList =
@@ -199,7 +187,7 @@ const ProjectModule = ({closeModal, projectName, currentProject, img, codeLink, 
             </DescriptionField>
     }
     return (
-        <Wrapper>
+        <Wrapper isModalOpen={isModalOpen}>
             <ImgWrapper img={img}/>
             <DescWrapper>
                 <FieldDesc> Project Title </FieldDesc>

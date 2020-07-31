@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import styled from "styled-components";
 import BottomWave from '../assets/waves/aboutWave_1.svg'
 import TopWave from '../assets/waves/aboutWave_2.svg'
 import Title from '../components/Atoms/Title'
 import Wave from "../components/Atoms/Wave";
 import { device } from "../devices/breakpoints";
+import Astronauts from "../assets/background/astronauts.png"
 
 const Wrapper = styled.div`
   position: absolute;
@@ -33,13 +34,34 @@ const ContextWrapper = styled.section`
   }
   @media ${device.tablet} {
     padding: 80px;
-    font-size: 1.5em;
+    font-size: 1.5em; 
   }
   @media ${device.laptop} {
      left: 50px;
      max-width: 1000px;
      font-size: 1.4em;
   }
+`
+const Astronaut = styled.img`
+    z-index: 0;
+    position: absolute;
+    width: 0;
+    
+    @media ${device.laptop}{
+      width: 120px;
+      bottom: 10vh;
+      right: 10vw;    
+    }
+    @media ${device.laptopL}{
+      width: 200px;
+      bottom: 15vh;
+      right: 10vw;    
+    }
+    @media ${device.desktop}{
+      width: 250px;
+      bottom: 15vh;
+      right: 10vw;    
+    }
 `
 
 const Description = styled.article`
@@ -81,16 +103,12 @@ const StyledList = styled.ul`
   list-style-type: circle;
   text-align: left;
 `
-const StyledWave = styled(Wave)`
-  position: absolute;
-  z-index: 1;
-`
-const About = ({aos}) => {
 
+const About = ({aos}) => {
     return (
         <Wrapper id="about">
-            <StyledWave src={TopWave} position="top" />
-            <StyledWave src={BottomWave} />
+            <Wave src={TopWave} position="top" />
+            <Wave src={BottomWave} />
                 <ContextWrapper data-aos={aos}>
                     <Title> About me </Title>
                     <Description>
@@ -121,8 +139,8 @@ const About = ({aos}) => {
                             <li> Adobe Xd </li>
                         </StyledList>
                     </ListWrapper>
-
                 </ContextWrapper>
+             <Astronaut data-aos="fade-up" src={Astronauts}/>
             </Wrapper>
     );
 };

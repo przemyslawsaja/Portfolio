@@ -1,48 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { device } from "../devices/breakpoints";
 import styled from "styled-components";
-import { keyframes } from 'styled-components';
-import Button from "../components/Atoms/Button/Button";
+import Button from "../components/Atoms/Buttons/Button";
+import Wave from "../components/Atoms/Wave";
+import Rocket from "../components/Atoms/SpaceUnits/Rocket";
+import Avatar from "../components/Atoms/Avatar";
+import { FadeIn, FadeOut } from "../Animations";
 import topWave from "../assets/waves/startWave_1.svg";
 import bottomWave from "../assets/waves/startWave_2.svg";
-import Wave from "../components/Atoms/Wave";
-import { device } from "../devices/breakpoints";
+import AvatarImg from "../assets/background/avatar.png"
 
-const SlideInRight = keyframes`
-  0% {
-    -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  } 
-`
-const SlideInDown = keyframes`
-  0% {
-    -webkit-transform: translateY(-1000px);
-            transform: translateY(-1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    opacity: 1;
-  } 
-`
-const FadeInAnimation = keyframes`
-  0% {
-    -webkit-transform: translateZ(600px);
-            transform: translateZ(600px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,30 +24,7 @@ const Wrapper = styled.div`
   
  @media ${device.laptop} { 
     left: 50px;
-  }
-  
-`
-const Avatar = styled.img `
-  width: 175px;
-  height: 175px;
-  animation: ${SlideInDown} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;  
-  
-  @media ${device.mobileM} { 
-    width: 225px;
-    height: 225px;
-  }
-
-  @media ${device.tablet} {
-    width: 275px;
-    height: 275px;
-    animation: ${SlideInDown} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both; 
-  }
-  @media ${device.laptop} { 
-      width: 350px;
-      height: 350px;
-      bottom: 20px;
-      right: 20px;
-  }
+  } 
 `
 const Message = styled.div`
   text-align: center;
@@ -93,38 +37,57 @@ const Message = styled.div`
   right: 100px; 
   
   @media ${device.mobileM} { 
- font-size: 0.8em;
+    font-size: 0.8em;
   }
   @media ${device.laptop} { 
-      font-size: 1em;
-      bottom: 50px;
-      right: 200px; 
+    font-size: 1em;
+    bottom: 50px;
+    right: 200px; 
   }  
 `
 const StyledButton = styled(Button)`
-
-        margin-top: 50px;
-        animation: ${FadeInAnimation} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) ${props => props.delay } both;
+        margin-top: 30px;
+        animation: ${({isRocketLaunched}) => isRocketLaunched ? FadeOut : FadeIn } 0.7s  cubic-bezier(0.250, 0.460, 0.450, 0.940)
+                   ${({isRocketLaunched, delayIn, delayOut}) => isRocketLaunched ? delayOut : delayIn } both; 
 `
 const TextLine = styled.h1`
         margin: 10px 0;
-        animation: ${FadeInAnimation} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) ${props => props.delay } both;
+        animation: ${({isRocketLaunched}) => isRocketLaunched ? FadeOut : FadeIn } 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+                   ${({isRocketLaunched, delayIn, delayOut}) => isRocketLaunched ? delayOut : delayIn } both;
 `
 
-const StartView = () => {
+const StartView = ({aboutRef}) => {
+    const [isRocketLaunched, setRocket] = useState(false);
+
+    const ToggleRocket = () => {
+        setRocket(!isRocketLaunched);
+        !isRocketLaunched && setTimeout(function(){
+            setRocket(false);
+            if(aboutRef.current){
+                aboutRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: "nearest"
+                })
+            }
+
+         }, 4000);
+    }
+
     return (
         <div id="home">
             <Wave src={topWave} position="top" />
             <Wave src={bottomWave} />
+            <Rocket isRocketLaunched={isRocketLaunched}/>
             <Wrapper>
-                <Avatar src="https://zapodaj.net/images/befd32d0e72b2.png" alt="Avatar" />
+                <Avatar src={AvatarImg} isRocketLaunched={isRocketLaunched}/>
                 <Message>
-                    <TextLine delay="1.5s"> Hi ! </TextLine>
-                    <TextLine delay="2.5s"> My name is Przemyslaw </TextLine>
-                    <TextLine delay="3.5s"> and I'm Front-End developer. </TextLine>
-
+                    <TextLine isRocketLaunched={isRocketLaunched} delayIn="1.4s" delayOut="0.6s"> Hi ! </TextLine>
+                    <TextLine isRocketLaunched={isRocketLaunched} delayIn="2.1s" delayOut="0.4s"> My name is Przemyslaw </TextLine>
+                    <TextLine isRocketLaunched={isRocketLaunched} delayIn="2.8s" delayOut="0.2s"> and I'm Front-End developer. </TextLine>
                 </Message>
-                <StyledButton delay="4.5s"> Let's go for a journey!</StyledButton>
+                <StyledButton onClick={ToggleRocket} isRocketLaunched={isRocketLaunched} delayIn="3.5s" delayOut="0.1s">
+                    Fire the engines!
+                </StyledButton>
             </Wrapper>
         </div>
     );

@@ -1,139 +1,71 @@
 import React from "react";
-import styled from "styled-components";
-import { keyframes } from 'styled-components';
-import Stars from "./Stars";
-import { device } from "../../devices/breakpoints"
-
-const PulsateAnimation = (deflection) => keyframes`
-  0% {
-      -webkit-transform: translateY(0);
-      transform: translateY(0)
-  }
-  50% {
-      -webkit-transform: translateY(${deflection}px);
-      transform: TranslateY(${deflection}px)
-  }       
-`
-const Rocket = styled.img `
-   position: absolute;
-   width:  ${props => props.size};
-   top:  ${props => props.y};
-   left:  ${props => props.x};
-   background-color:rgba(0, 0, 0, 0);
-   transform: rotate(${props => props.rotation});
-   animation: ${PulsateAnimation()} ${props => props.duration} ease-in-out infinite both ;
-   z-index: 2;
-`
-const SpaceUnit = styled.img `
-    opacity: 0.8;
-    z-index: ${props => props.z};
-    position: ${({ fixed }) => fixed ? 'fixed' : 'absolute' };
-    width: ${props => props.size}px;
-    top:  ${props => props.y};
-    left:  ${props => props.x};
-    animation:  ${props => PulsateAnimation(props.vertical)} ${props => props.duration} ease-in-out infinite both ;
-    
-    @media ${device.mobileL}{
-      width: ${props => props.size*1.2}px;
-    }
-    @media ${device.tablet}{
-      width: ${props => props.size*2}px;
-      opacity: ${({opacity}) => opacity ? 1 : 0.5}
-    }
-     @media ${device.laptopL}{
-      width: ${props => props.size*2.5}px;
-      opacity: 1
-    }
-  
-`
-const Meteor = styled.img `
-    opacity: 0.7;
-    position: fixed;
-    width:  ${props => props.size}px;
-    top:  ${props => props.y};
-    left:  ${props => props.x};
-    
-    @media ${device.tablet}{
-      width: ${props => props.size*1.5}px;
-    } 
-    @media ${device.laptopL}{
-      width: ${props => props.size*2}px;
-      left:  ${props => props.x}+50;
-      opacity: 1
-    }      
-`
+import bluePlanet from "../../assets/background/bluePlanet.png"
+import purplePlanet from "../../assets/background/purplePlanet.png"
+import redPlanet from "../../assets/background/redPlanet.png"
+import meteor1 from "../../assets/background/meteor1.png"
+import meteor2 from "../../assets/background/meteor2.png"
+import meteor3 from "../../assets/background/meteor3.png"
+import Planet from "../Atoms/SpaceUnits/Planet";
+import Meteor from "../Atoms/SpaceUnits/Meteor";
+import Stars from "../Atoms/SpaceUnits/Stars";
 
 const Background = () => {
-
     return (
-        <>
-            <SpaceUnit
+        <div id="scene">
+            <Planet
                 x="70vw"
                 y="15vh"
-                src="https://zapodaj.net/images/72b4e64e19dba.png"
+                src= {bluePlanet}
                 alt="Blue_Planet"
                 duration="3s"
                 vertical="20"
                 size="150"
                 fixed={true}
             />
-            <SpaceUnit
+            <Planet
                 x="10vw"
                 y="50vh"
-                src="https://zapodaj.net/images/80bb44a31ee0f.png"
+                src= {redPlanet}
                 alt="Red_Planet"
                 duration="2.5s"
                 vertical="15"
                 size="25"
                 fixed={true}
             />
-            <SpaceUnit
+            <Planet
                 x="-30px"
                 y="85vh"
                 size="100"
-                src="https://zapodaj.net/images/37ea92089e9a9.png"
+                src= {purplePlanet}
                 alt="Purple_Planet"
                 duration="10s"
-                z="1"
-                opacity={true}
+                onTop = {true}
             />
-
             <Meteor
                 x="-10px"
                 y="10vh"
                 size="150"
-                src="https://zapodaj.net/images/cfda93d99f681.png"
+                src= {meteor1}
                 alt="Meteor1"
             />
             <Meteor
                 x="40vw"
                 y="60vh"
                 size="200"
-                src="https://zapodaj.net/images/c57b0689b1c0d.png"
+                src= {meteor2}
                 alt="Meteor2"
             />
             <Meteor
                 x="5vw"
                 y="65vh"
                 size="100"
-                src="https://zapodaj.net/images/362621750486f.png"
+                src= {meteor3}
                 alt="Meteor3"
             />
             <Stars />
-        </>
+        </div>
 
     );
 };
 
 export default Background;
-
-/*
-            <Rocket
-                size="50px"
-                x="0vh"
-                y="75vh"
-                rotation="15deg"
-                src="https://zapodaj.net/images/f5562d1a18875.png"
-                alt="Rocket"
-            />
- */

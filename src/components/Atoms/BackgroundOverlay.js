@@ -7,7 +7,7 @@ const Overlay = styled.div`
   width: 100vw;
   height: 400vh;
   background-color: black;
-  z-index: 900;
+  z-index: 999;
   opacity: 0.8;
 `
 

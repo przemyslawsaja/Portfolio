@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 
 const ButtonWrapper = styled.button`
+  outline: none;
   font-size: 1.5em;
   padding: 10px;
   display: flex;
@@ -28,14 +29,8 @@ const SecondaryButton = ({children, className, onClick}) => {
     return (
         <ButtonWrapper onClick={onClick} className={className}>
             {children}
-
         </ButtonWrapper>
     );
 };
 
 export default SecondaryButton;
-
-/*
- <Icon className="fas fa-arrow-circle-left" />
-            <ButtonText> GO BACK </ButtonText>
- */

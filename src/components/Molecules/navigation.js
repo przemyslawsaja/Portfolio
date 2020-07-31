@@ -12,7 +12,7 @@ const Menubar = styled.ul`
   top: 0;
   height: 60px;
   width: 100vw;
-  z-index: 10;
+  z-index: 998;
   background-color: #100e1c;
   justify-items: center;
   align-items: center;
@@ -33,11 +33,8 @@ const Icon = styled.i`
     @media ${device.mobileS} { 
       font-size: 1.7em;
     }
-    @media ${device.mobileM} { 
-      font-size: 1.7em;
-    }
      @media ${device.mobileL} {  
-      margin: 0 40px;
+      margin: 0 30px;
       font-size: 2.2em;
     }
     
