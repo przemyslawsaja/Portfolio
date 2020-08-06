@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BottomWave from '../assets/waves/aboutWave_1.svg'
 import TopWave from '../assets/waves/aboutWave_2.svg'
 import Title from '../components/Atoms/Title'
-import Wave from "../components/Atoms/Wave";
+import Wave from "../components/Atoms/Background/Wave";
 import { device } from "../devices/breakpoints";
 import Astronauts from "../assets/background/astronauts.png"
 
@@ -49,7 +49,7 @@ const Astronaut = styled.img`
     
     @media ${device.laptop}{
       width: 120px;
-      bottom: 10vh;
+      bottom: 7vh;
       right: 10vw;    
     }
     @media ${device.laptopL}{
@@ -78,8 +78,8 @@ const ListWrapper = styled.div`
   margin: 10px 15px;
   
   @media ${device.mobileS} { 
-      margin: 10px 30px;
-      font-size: 0.9em;
+     margin: 10px 30px;
+     font-size: 0.9em;
   }
   @media ${device.mobileM} { 
      margin: 10px 30px;
@@ -111,7 +111,7 @@ const About = ({aos}) => {
             <Wave src={BottomWave} />
                 <ContextWrapper data-aos={aos}>
                     <Title> About me </Title>
-                    <Description>
+                    <Description data-aos="fade-right">
                         Hi! I'm a 22-year-old student of computer science living in Cracow.
                         I am an independent and very creative person.
                         From the beginning of high school I started to be interested in computer graphics.
@@ -122,7 +122,7 @@ const About = ({aos}) => {
                         <p>Here are a few technologies I've been working with recently:</p>
                     </Description>
                     <ListWrapper>
-                        <StyledList>
+                        <StyledList data-aos="fade-right">
                             <ListTitle> FRONT-END</ListTitle>
                             <li> HTML5 </li>
                             <li> CSS3 </li>
@@ -132,7 +132,7 @@ const About = ({aos}) => {
                             <li> React & Redux</li>
                             <li> Hooks & Context</li>
                         </StyledList>
-                        <StyledList>
+                        <StyledList  data-aos="fade-left">
                             <ListTitle> DESIGN</ListTitle>
                             <li> Adobe Photoshop</li>
                             <li> Adobe Illustrator</li>
@@ -141,7 +141,7 @@ const About = ({aos}) => {
                     </ListWrapper>
                 </ContextWrapper>
              <Astronaut data-aos="fade-up" src={Astronauts}/>
-            </Wrapper>
+        </Wrapper>
     );
 };
 

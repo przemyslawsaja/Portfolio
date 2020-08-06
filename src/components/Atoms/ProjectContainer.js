@@ -46,7 +46,7 @@ const Project = styled.button`
 
 const ProjectContainer = ({onClick, background}) => {
     return (
-            <Project onClick={onClick} background={background}/>
+            <Project data-aos="flip-down" data-aos-duration="500" onClick={onClick} background={background}/>
     );
 };
 

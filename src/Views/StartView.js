@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { device } from "../devices/breakpoints";
 import styled from "styled-components";
 import Button from "../components/Atoms/Buttons/Button";
-import Wave from "../components/Atoms/Wave";
+import Wave from "../components/Atoms/Background/Wave";
 import Rocket from "../components/Atoms/SpaceUnits/Rocket";
 import Avatar from "../components/Atoms/Avatar";
 import { FadeIn, FadeOut } from "../Animations";
@@ -10,7 +10,12 @@ import topWave from "../assets/waves/startWave_1.svg";
 import bottomWave from "../assets/waves/startWave_2.svg";
 import AvatarImg from "../assets/background/avatar.png"
 
-const Wrapper = styled.div`
+const OutsideWrapper = styled.div`
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+`
+const InsideWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +26,7 @@ const Wrapper = styled.div`
   width: 100vw;
   z-index: 1;
   position: absolute;
-  
- @media ${device.laptop} { 
-    left: 50px;
-  } 
+
 `
 const Message = styled.div`
   text-align: center;
@@ -74,11 +76,11 @@ const StartView = ({aboutRef}) => {
     }
 
     return (
-        <div id="home">
+        <OutsideWrapper id="home">
             <Wave src={topWave} position="top" />
             <Wave src={bottomWave} />
             <Rocket isRocketLaunched={isRocketLaunched}/>
-            <Wrapper>
+            <InsideWrapper>
                 <Avatar src={AvatarImg} isRocketLaunched={isRocketLaunched}/>
                 <Message>
                     <TextLine isRocketLaunched={isRocketLaunched} delayIn="1.4s" delayOut="0.6s"> Hi ! </TextLine>
@@ -88,8 +90,8 @@ const StartView = ({aboutRef}) => {
                 <StyledButton onClick={ToggleRocket} isRocketLaunched={isRocketLaunched} delayIn="3.5s" delayOut="0.1s">
                     Fire the engines!
                 </StyledButton>
-            </Wrapper>
-        </div>
+            </InsideWrapper>
+        </OutsideWrapper>
     );
 };
 

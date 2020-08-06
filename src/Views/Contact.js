@@ -1,166 +1,117 @@
 import React from 'react';
 import Title from "../components/Atoms/Title";
-import TopWave from "../assets/waves/contactWave_1.svg"
-import BottomWave from "../assets/waves/contactWave_2.svg"
-import Wave from "../components/Atoms/Wave";
+import Paragraph from "../components/Atoms/Paragraph";
+import Wave from "../components/Atoms/Background/Wave";
 import styled from "styled-components";
-import { keyframes } from 'styled-components';
-import { useForm } from "react-hook-form"
-import SecondaryButton from "../components/Atoms/Buttons/SecondaryButton";
+import TopWave from "../assets/waves/contactWave_1.svg"
 import { device } from "../devices/breakpoints";
+import JobStatusBox from "../components/Atoms/JobStatusBox";
+import ContactBox from  "../components/Atoms/ContactBox"
 
-const ErrorAnimation = () => keyframes`
- 0% {
-  -webkit-transform: scale3d(1, 1, 1);
-  transform: scale3d(1, 1, 1);
-  }
-  10%, 20% {
-  -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-  transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-  }
-  30%, 50%, 70%, 90% {
-  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-  }
-  40%, 60%, 80% {
-  -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-  transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-  }
-  100% {
-  -webkit-transform: scale3d(1, 1, 1);
-  transform: scale3d(1, 1, 1);
-  }
-`
-const Wrapper = styled.div`
+const OuterWrapper = styled.div`
   position: absolute;
   height: 100vh;
   width: 100vw;
-
-
 `
-const ContextWrapper = styled.section`
-position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  top: 15%;
-  
-    
-
-`
-const StyledForm = styled.form`
-  font-size: 0.8em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #0e0d1a;
-  border-radius: 20px;
-  opacity: 0.9;
-  margin: 15px 0 10px 0;
+const InnerWrapper = styled.section`
+  font-size: 1.1em;
   width: 100vw;
-  height: 70vh;
-  padding: 10px;
-  @media ${device.mobileS} {
-     width: 80vw;
-  }
-  @media ${device.mobileL} {
-     width: 70vw;
-     height: auto;
-  }
-  @media ${device.laptop} {
-     padding: 20px 0 10px 10px;
-     margin: 50px 0 0 50px;
-  }  
+  position: absolute;
+  top: 50px;
+  z-index: 2;
   
 `
-const StyledInput = styled.input`
-  width: 90%;
-  color: white;
-  margin: 10px 50px 40px 50px;
-  padding: 20px;
-  background: none;
-  border: 0;
-  border-bottom: 2px solid royalblue;
-
-  @media ${device.tablet} {
-     font-size: 1.5em;
-  }
-  &:focus {
-  outline-width: 0;
+const Header = styled.div`
+ text-align: center;
+ margin: 0 20px;
+`
+const Content = styled.div`
+  margin: 30px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
+  @media ${device.tablet}{
+  margin-top: 100px;
   }
 `
-const StyledTextArea = styled.textarea`
-  resize: none;
-  color: white;
-  background: none;
-  width: 90%;
-  height: 400px;
-  padding: 20px;
-  border: 2px solid royalblue;
-  margin-bottom: 30px;
-  
-  @media ${device.tablet} {
-     font-size: 1.7em;
-  }
-  
-  &:focus {
-  outline-width: 0;
-  }
-`
-const ErrorMessage = styled.p`
-  color: red;
-  margin: 5px;  
-  animation: ${ErrorAnimation} 1s both;
+const ContactInfo = styled.div`
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ margin-top: 30px;
 `
 
-//TODO: BLOCK POSSIBILITY TO SEND MORE THEN ONE MAIL AFTER ENTERING VALID VALUES IN FORM
+
+
 const Contact = ({aos}) => {
-    const { register, handleSubmit, errors } = useForm(); // initialise the hook
-    const onSubmit = (data) => {
-        console.log(data);
-    };
     return (
-        <Wrapper id="contact">
+        <OuterWrapper id="contact">
             <Wave src={TopWave} position="top" />
-            <Wave src={BottomWave} />
-            <ContextWrapper data-aos={aos}>
-                <Title> Let's Talk </Title>
-                <StyledForm  onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-                    {errors.email && errors.email.type === "required"  && <ErrorMessage>Email is required </ErrorMessage>}
-                    {errors.email && errors.email.type === "pattern"  && <ErrorMessage> Wrong email </ErrorMessage>}
-                    <StyledInput
-                        label="E-mail"
-                        name="email"
-                        placeholder="youremail@mail.com"
-                        ref={register({
-                            required: true,
-                            pattern: {
-                                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
-                                message: 'invalid email adress'
-                            }
-                        })}
+            <InnerWrapper >
+                <Header data-aos={aos}>
+                    <Title > Let's talk</Title>
+                    <Paragraph>Do you have any questions? Feel free to contact me!</Paragraph>
+                </Header>
+                <Content>
+                    <div data-aos="flip-up" data-aos-duration="1500">
+                        <JobStatusBox/>
+                    </div>
+                    <ContactInfo>
+                        <ContactBox
+                            icon="fas fa-paper-plane"
+                            title="E-Mail"
+                            description="Contact me by email - przemyslawsaja@gmail.com"
+                        />
+                        <ContactBox
+                            icon="fab fa-github"
+                            title="Github"
+                            description="Take a look at my Github repositories"
+                            link="https://github.com/przemyslawsaja"
+                        />
+                        <ContactBox
+                            icon="fab fa-linkedin-in"
+                            title="Linkedin"
+                            description="Let's connect on Linkedin!"
+                            link="https://www.linkedin.com/in/przemyslawsaja/"
+                        />
+                        <ContactBox
+                            icon="far fa-file"
+                            title="CV"
+                            description="Here you can explore and download my reasume"
+                            link="https://docdro.id/eVf2svH"
+                        />
+                    </ContactInfo>
+                </Content>
+            </InnerWrapper>
 
-                    />
-                    {errors.textarea && <ErrorMessage>Pleas enter your message</ErrorMessage>}
-                    <StyledTextArea
-                        placeholder="Your message..."
-                        variant="outlined"
-                        name="textarea"
-                        ref={register({
-                            required: true,
-                        })} />
-
-
-
-                    <SecondaryButton type="submit" >
-                        Send
-                    </SecondaryButton>
-                </StyledForm>
-            </ContextWrapper>
-        </Wrapper>
+        </OuterWrapper>
     );
 };
 
 export default Contact;
+
+/*
+
+<ContactBox>
+                            <Icon className="fas fa-paper-plane" />
+                            <p>przemyslawsaja@gmail.com</p>
+                        </ContactBox>
+                        <ContactBox>
+                            <Icon className="fab fa-github" />
+                            <p>Take a look at my Github repositories!</p>
+                        </ContactBox>
+                        <ContactBox>
+                            <Link  target="_blank" rel="noopener noreferrer" href="https://docdro.id/eVf2svH">
+                                <Icon className="far fa-file" />
+                                <LinkParagraph>CV</LinkParagraph>
+                            </Link>
+                        </ContactBox>
+                        <ContactBox>
+                            <Link  target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/przemys%C5%82aw-saja-843b64172/" >
+                                <Icon className="fab fa-linkedin-in"/>
+                                <LinkParagraph>Let's connect on Linkedin!</LinkParagraph>
+                            </Link>
+                        </ContactBox>
+ */

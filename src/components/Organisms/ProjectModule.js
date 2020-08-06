@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import SecondaryButton from "../Atoms/Buttons/SecondaryButton";
 import { device } from "../../devices/breakpoints";
 import { LiveDot, FadeIn , FadeOut} from "../../Animations";
+import { projectsData } from "../../projectsData";
 
 const ModalPrams = {
     x: '900px',
@@ -47,11 +48,12 @@ const ImgWrapper = styled.div`
 const DescWrapper = styled.div`
   position: absolute;
   right: 0;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   background-color: #454254;
   
   @media ${device.tablet}{
+    width: 300px;
     border-radius: 0 20px 20px 0;
     height: ${ModalPrams.y};
   }
@@ -136,56 +138,26 @@ const ButtonText = styled.div`
   font-size: 1.4em;
 `
 
-const ProjectModule = ({isModalOpen, closeModal, projectName, currentProject, img, codeLink, liveLink }) => {
-    let techList,description;
-    if(currentProject === "HomePantry"){
-        techList =
-            <ul>
-                <TechIcon> HTML/CSS/JS </TechIcon>
-                <TechIcon> REACT & REDUX </TechIcon>
-                <TechIcon> REACT ROUTES </TechIcon>
-            </ul>
-        description =
-            <DescriptionField>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                aspernatur aut odit aut fugit, sed quia consequuntur
-            </DescriptionField>
-    } else if (currentProject === "FavNote"){
-        techList =
-            <ul>
-                <TechIcon> HTML/CSS/JS </TechIcon>
-                <TechIcon> REACT & REDUX </TechIcon>
-                <TechIcon> STYLED COMPONENTS </TechIcon>
-                <TechIcon> REACT ROUTES </TechIcon>
-                <TechIcon> STORYBOOK </TechIcon>
-            </ul>
-        description =
-            <DescriptionField>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                aspernatur aut odit aut fugit, sed quia consequuntur
-            </DescriptionField>
-    } else if (currentProject === "LightsOut") {
-        techList =
-            <ul>
-                <TechIcon> HTML/CSS/JS </TechIcon>
-                <TechIcon> REACT </TechIcon>
 
-            </ul>
-        description =
-            <DescriptionField>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                aspernatur aut odit aut fugit, sed quia consequuntur
-            </DescriptionField>
-    }
+const ProjectModule = ({isModalOpen, closeModal, projectName, currentProject, img, codeLink, liveLink }) => {
+    let techList,
+        description;
+
+    projectsData.map((project) => {
+        if(currentProject === project.name){
+            techList = <ul>
+                            {project.technologies.map((tech)=> {
+                                return (
+                                    <TechIcon> {tech} </TechIcon>
+                                )
+                            })}
+                       </ul>
+            description = <DescriptionField>
+                            {project.description}
+                         </DescriptionField>
+        }
+    })
+
     return (
         <Wrapper isModalOpen={isModalOpen}>
             <ImgWrapper img={img}/>
@@ -193,14 +165,13 @@ const ProjectModule = ({isModalOpen, closeModal, projectName, currentProject, im
                 <FieldDesc> Project Title </FieldDesc>
                 <ProjectTitle> {projectName} </ProjectTitle>
                 <FieldDesc margin="15px"> Used technologies </FieldDesc>
-                {techList}
+                  {techList}
                 <FieldDesc  margin="15px"> Links </FieldDesc>
                 <LinksWrapper>
                         <Link href={codeLink} target="_blank" rel="noopener noreferrer" color="#d9998a" hoverColor="#cf6b97">
                             <p>CODE</p>
                             <LinkIcon> <i className="fas fa-code"/> </LinkIcon>
                         </Link>
-
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer" color="#cf6b97" hoverColor="#d9998a">
                         <p>LIVE</p>
                         <LinkIcon isLive={true}>
@@ -209,10 +180,9 @@ const ProjectModule = ({isModalOpen, closeModal, projectName, currentProject, im
                             </svg>
                         </LinkIcon>
                     </Link>
-
                 </LinksWrapper>
                 <FieldDesc  margin="15px"> Project Description </FieldDesc>
-                {description}
+                 {description}
                 <StyledBackButton onClick={closeModal}>
                     <Icon className="fas fa-arrow-circle-left" />
                     <ButtonText> GO BACK </ButtonText>

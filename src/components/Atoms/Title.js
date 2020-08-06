@@ -16,7 +16,7 @@ const StyledTitle = styled.h1`
 
 const Title = ({children, classname}) => {
     return (
-        <StyledTitle classname={classname}>
+        <StyledTitle data-aos="fade-down" classname={classname}>
             {children}
         </StyledTitle>
     );

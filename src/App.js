@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import './App.css';
 import styled from "styled-components";
-import Navigation from "./components/Molecules/navigation";
-import Background from "./components/Molecules/background";
+import Navigation from "./components/Molecules/Navigation";
+import Background from "./components/Organisms/Background";
 import StartView from "./Views/StartView";
 import About from "./Views/About";
 import Stars from "./components/Atoms/SpaceUnits/Stars";
@@ -15,7 +15,9 @@ const Slide = styled.div`
   height: 100vh;
   width: 100vw;
 `
-
+const Wrapper = styled.div`
+ position: absolute;
+`
 function App() {
     const about = useRef();
 
@@ -27,15 +29,23 @@ function App() {
 
     return (
 
-      <>
+      <Wrapper>
           <Navigation />
           <Stars />
-          <Slide > <StartView aboutRef={about}/> </Slide>
-          <Slide ref={about}> <About aos="fade-right"/> </Slide>
-          <Slide> <Projects aos="fade-left"/> </Slide>
-          <Slide> <Contact aos="fade-down"/> </Slide>
+          <Slide >
+              <StartView aboutRef={about}/>
+          </Slide>
+          <Slide ref={about}>
+              <About />
+          </Slide>
+          <Slide>
+              <Projects />
+          </Slide>
+          <Slide>
+              <Contact />
+          </Slide>
           <Background />
-      </>
+      </Wrapper>
   );
 }
 
