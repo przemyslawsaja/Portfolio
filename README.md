@@ -1,6 +1,6 @@
 ## DEMO
 
-http://wwww.przemyslawsaja.netlify.app
+https://przemyslawsaja.netlify.app/
 
 ## Available Scripts
 
