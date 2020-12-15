@@ -1,6 +1,6 @@
 import projectIMG1 from "./assets/mockups/homepantry.png";
 import projectIMG2 from "./assets/mockups/Favnote.png";
-import projectIMG3 from "./assets/mockups/LightsOut.png";
+import projectIMG3 from "./assets/mockups/TrainingCenter.png";
 
 const projectsData =  [
     {
@@ -34,16 +34,19 @@ const projectsData =  [
         ]
     },
     {
-        "name": 'LightsOut',
+        "name": 'TraingCenter',
         "img": projectIMG3,
-        "codeLink": 'https://github.com/przemyslawsaja/Lights-Out',
-        'liveLink': 'https://www.netlify.com/',
-        'description': 'The game consists of a 5 by 5 grid of lights. When the game starts, a random number or a ' +
-            'stored pattern of these lights is switched on. Pressing any of the lights will toggle it and the adjacent lights. ' +
-            'Your goal is to turn off all of the lights. Its not that easy as you think! :)',
+        "codeLink": 'https://github.com/CodeEnthusiasts/TrainingCenter-fe',
+        'liveLink': 'https://github.com/CodeEnthusiasts/TrainingCenter-fe',
+        'description': 'Having a plan and reflection on the outcomes are the key elements of achieving great results. The process of training, developing muscles or any skill are governed by the same rules. Do you want to get to know your body better, design and analyze the plan which allows you to succeed faster and better? If the answer is yes, this application is perfect for you.',
         'technologies': [
-            'HTML/CSS/JS',
+            'TYPESCRIPT',
             'REACT ',
+            'REACT HOOKS FORM',
+            'STYLED COMPONENTS',
+            'REACT ROUTER',
+            'CONTEXT',
+            'AXIOS'
         ]
     },
 
