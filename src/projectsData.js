@@ -22,7 +22,7 @@ const projectsData =  [
         "name": 'FavNote',
         "img": projectIMG2,
         "codeLink": 'https://github.com/przemyslawsaja/FavNote',
-        'liveLink': 'https://www.netlify.com/',
+        'liveLink': 'https://favoritenotes.netlify.app',
         'description':  'The react app, which allows you to save notes, twitter accounts, or articles. ' +
                          'It is based on "Adam Romański" course.',
         'technologies': [
