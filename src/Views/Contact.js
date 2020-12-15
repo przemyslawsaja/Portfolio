@@ -56,7 +56,7 @@ const Contact = ({aos}) => {
                 </Header>
                 <Content>
                     <div data-aos="flip-up" data-aos-duration="1500">
-                        <JobStatusBox/>
+                        <JobStatusBox closed/>
                     </div>
                     <ContactInfo>
                         <ContactBox

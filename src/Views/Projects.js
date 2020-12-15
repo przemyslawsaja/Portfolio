@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import styled from "styled-components";
-import Title from "../components/Atoms/Title";
 import Wave from "../components/Atoms/Background/Wave";
-import ProjectContainer from "../components/Atoms/ProjectContainer";
-import ProjectModule from "../components/Organisms/ProjectModule";
-import BackgroundOverlay from "../components/Atoms/Background/BackgroundOverlay";
+import Title from "../components/Atoms/Title";
+import styled from "styled-components";
 import Planet from "../components/Atoms/SpaceUnits/Planet";
-import TopWave from "../assets/waves/projectsWave_1.svg"
-import BottomWave from "../assets/waves/projectsWave_2.svg"
 import Island from  "../assets/background/island.png"
-import { projectsData } from "../projectsData"
+import TopWave from "../assets/waves/ProjectsWave_1.svg"
 import Paragraph from "../components/Atoms/Paragraph";
+import BottomWave from "../assets/waves/ProjectsWave_2.svg"
+import ProjectModule from "../components/Organisms/ProjectModule";
+import ProjectContainer from "../components/Atoms/ProjectContainer";
+import BackgroundOverlay from "../components/Atoms/Background/BackgroundOverlay";
+
+import { projectsData } from "../projectsData"
 import { device } from "../devices/breakpoints";
 
 const Wrapper = styled.div`

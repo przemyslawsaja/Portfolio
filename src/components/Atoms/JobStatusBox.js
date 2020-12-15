@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components'
 import {device} from "../../devices/breakpoints";
 
+const OpenColor = '#5ce835';
+const ClosedColor = '#ff1c08';
+
+
 const BoxWrapper = styled.div`
   width: 200px;
   height: 100px;
   background-color: #151326;
   border-radius: 10px;
-  border: 2px solid #5ce835;
+  border: 2px solid ${(props) => props.closed ? ClosedColor : OpenColor};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,11 +45,11 @@ const StyledParagraph = styled.p`
    font-size: 1.5em;
   }
 `
-const JobStatusBox = () => {
+const JobStatusBox = ({closed}) => {
     return (
-        <BoxWrapper>
+        <BoxWrapper closed={closed}>
             <BoxTitle>Status</BoxTitle>
-            <StyledParagraph>Open for job offers</StyledParagraph>
+            <StyledParagraph>{closed ? 'Closed' : 'Open'} for job offers</StyledParagraph>
         </BoxWrapper>
     );
 };

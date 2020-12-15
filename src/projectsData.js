@@ -1,5 +1,5 @@
 import projectIMG1 from "./assets/mockups/homepantry.png";
-import projectIMG2 from "./assets/mockups/favnote.png";
+import projectIMG2 from "./assets/mockups/Favnote.png";
 import projectIMG3 from "./assets/mockups/LightsOut.png";
 
 const projectsData =  [
